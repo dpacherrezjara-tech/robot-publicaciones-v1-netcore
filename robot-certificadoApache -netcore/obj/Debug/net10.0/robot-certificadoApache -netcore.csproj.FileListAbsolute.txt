@@ -1,0 +1,48 @@
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.exe
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.dll.config
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.deps.json
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.runtimeconfig.json
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.pdb
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.ServiceProcess.ServiceController.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.Messages.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.ServiceProcess.ServiceController.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.csproj.AssemblyReference.cache
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.GeneratedMSBuildEditorConfig.editorconfig
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.AssemblyInfoInputs.cache
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.AssemblyInfo.cs
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.csproj.CoreCompileInputs.cache
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-ce.4AC31AD9.Up2Date
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\refint\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.pdb
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.genruntimeconfig.cache
+D:\REPROSITORIO-GIT\NET\robot-certificados-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\ref\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.exe
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.dll.config
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.deps.json
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.runtimeconfig.json
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\robot-certificadoApache -netcore.pdb
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\System.ServiceProcess.ServiceController.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.Messages.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.ServiceProcess.ServiceController.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.csproj.AssemblyReference.cache
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.GeneratedMSBuildEditorConfig.editorconfig
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.AssemblyInfoInputs.cache
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.AssemblyInfo.cs
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.csproj.CoreCompileInputs.cache
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-ce.4AC31AD9.Up2Date
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\refint\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.pdb
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\robot-certificadoApache -netcore.genruntimeconfig.cache
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\obj\Debug\net10.0\ref\robot-certificadoApache -netcore.dll

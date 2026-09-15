@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="robot-certificadoApache -netcore/robot-certificadoApache -netcore.csproj" />
+  <Project Path="robot-certificadoKeystore-netcore/robot-certificadoKeystore-netcore.csproj" />
+  <Project Path="robot-publicacion-netcore/robot-publicacion-netcore.csproj" />
+</Solution>

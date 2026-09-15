@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "I9RIlcaihCc=",
+  "success": true,
+  "projectFilePath": "D:\\REPROSITORIO-GIT\\NET\\robot-publicaciones-netcore\\robot-certificadoApache -netcore\\robot-certificadoApache -netcore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.10\\system.configuration.configurationmanager.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.10\\system.diagnostics.eventlog.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.10\\system.security.cryptography.protecteddata.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.serviceprocess.servicecontroller\\10.0.10\\system.serviceprocess.servicecontroller.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.11\\microsoft.netcore.app.runtime.win-x64.10.0.11.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.11\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.11.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.11\\microsoft.aspnetcore.app.runtime.win-x64.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

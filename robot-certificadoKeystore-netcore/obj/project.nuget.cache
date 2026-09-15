@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "KkU7W3oIsuQ=",
+  "success": true,
+  "projectFilePath": "D:\\REPROSITORIO-GIT\\NET\\robot-publicaciones-netcore\\robot-certificadoKeystore-netcore\\robot-certificadoKeystore-netcore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.10\\system.configuration.configurationmanager.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.10\\system.diagnostics.eventlog.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.10\\system.security.cryptography.protecteddata.10.0.10.nupkg.sha512",
+    "C:\\Users\\dpacherrez\\.nuget\\packages\\system.serviceprocess.servicecontroller\\10.0.10\\system.serviceprocess.servicecontroller.10.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

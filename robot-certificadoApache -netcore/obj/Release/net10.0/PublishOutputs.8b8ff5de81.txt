@@ -1,0 +1,13 @@
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.exe
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.deps.json
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.runtimeconfig.json
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.dll.config
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\robot-certificadoApache -netcore.pdb
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\System.Configuration.ConfigurationManager.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\System.Security.Cryptography.ProtectedData.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\System.ServiceProcess.ServiceController.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.Messages.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.dll
+D:\REPROSITORIO-GIT\NET\robot-publicaciones-netcore\robot-certificadoApache -netcore\bin\Release\net10.0\publish\runtimes\win\lib\net10.0\System.ServiceProcess.ServiceController.dll
