@@ -101,13 +101,14 @@ class Program
             }
 
             // DESPLIEGUE
+            // DESPLIEGUE
             if (exitoGeneracion)
             {
                 string enableDeploy = ObtenerValor(config, "ENABLE_DEPLOY", "DEPLOY_SETTINGS");
                 if (enableDeploy?.ToLower() == "true")
                 {
                     string tomcatDestinoRaw = ObtenerValor(config, "TOMCAT_KEYSTORE_PATH", "DEPLOY_SETTINGS");
-                    string tomcatServicio = ObtenerValor(config, "TOMCAT_SERVICE_NAME", "DEPLOY_SETTINGS");
+                    string tomcatServicioRaw = ObtenerValor(config, "TOMCAT_SERVICE_NAME", "DEPLOY_SETTINGS");
                     string restartTomcat = ObtenerValor(config, "RESTART_TOMCAT", "DEPLOY_SETTINGS") ?? "true";
                     string backupOld = ObtenerValor(config, "BACKUP_OLD_KEYSTORE", "DEPLOY_SETTINGS") ?? "true";
 
@@ -115,115 +116,145 @@ class Program
                     {
                         EscribirLog("[ADVERTENCIA] DEPLOY activado pero no se especificó TOMCAT_KEYSTORE_PATH. Se omite.", true);
                     }
-                    else if (string.IsNullOrEmpty(tomcatServicio))
+                    else if (string.IsNullOrEmpty(tomcatServicioRaw))
                     {
                         EscribirLog("[ADVERTENCIA] DEPLOY activado pero no se especificó TOMCAT_SERVICE_NAME. Se omite.", true);
                     }
                     else
                     {
+                        // 🔧 NUEVO: separadores comunes para rutas y servicios
                         char[] separadores = new[] { ';', '|' };
+
                         var rutasDestino = tomcatDestinoRaw
                             .Split(separadores, StringSplitOptions.RemoveEmptyEntries)
                             .Select(r => r.Trim().Trim('"'))
                             .Where(r => !string.IsNullOrEmpty(r))
                             .ToArray();
 
-                        string origenKeystore = Path.Combine(outputPath, outputName);
-                        bool reiniciar = restartTomcat.ToLower() == "true";
-                        bool backup = backupOld.ToLower() == "true";
+                        var servicios = tomcatServicioRaw
+                            .Split(separadores, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(s => s.Trim().Trim('"'))
+                            .Where(s => !string.IsNullOrEmpty(s))
+                            .ToArray();
 
-                        EscribirLog($"Iniciando despliegue a Tomcat ({rutasDestino.Length} destino(s))...");
-
-                        exitoDeploy = true;
-                        var errores = new List<string>();
-
-                        // 1) Detener servicio UNA sola vez
-                        if (reiniciar)
+                        // 🔧 NUEVO: validar que haya la misma cantidad de rutas y servicios
+                        if (rutasDestino.Length != servicios.Length)
                         {
-                            try
-                            {
-                                using var sc = new ServiceController(tomcatServicio);
-                                if (sc.Status == ServiceControllerStatus.Running ||
-                                    sc.Status == ServiceControllerStatus.StartPending)
-                                {
-                                    EscribirLog($"Deteniendo servicio: {tomcatServicio}...");
-                                    sc.Stop();
-                                    sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(120));
-                                    EscribirLog($"Servicio {tomcatServicio} detenido.");
-                                }
-                                else
-                                {
-                                    EscribirLog($"El servicio {tomcatServicio} ya estaba detenido.");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                EscribirLog($"[ERROR] No se pudo detener el servicio: {ex.Message}", true);
-                                exitoDeploy = false;
-                                errorDeploy = ex.Message;
-                            }
+                            EscribirLog($"[ERROR] Desajuste: {rutasDestino.Length} ruta(s) de keystore vs {servicios.Length} servicio(s). Deben coincidir en cantidad y orden.", true);
+                            exitoDeploy = false;
+                            errorDeploy = "TOMCAT_KEYSTORE_PATH y TOMCAT_SERVICE_NAME no coinciden en cantidad.";
                         }
-
-                        // 2) Copiar a TODOS los destinos
-                        if (exitoDeploy)
-                        {
-                            foreach (var destino in rutasDestino)
-                            {
-                                try
-                                {
-                                    string destinoDir = Path.GetDirectoryName(destino);
-                                    if (!string.IsNullOrEmpty(destinoDir) && !Directory.Exists(destinoDir))
-                                    {
-                                        Directory.CreateDirectory(destinoDir);
-                                        EscribirLog($"Carpeta de destino creada: {destinoDir}");
-                                    }
-
-                                    if (backup && File.Exists(destino))
-                                    {
-                                        string backupFile = destino + $".backup_{DateTime.Now:yyyyMMdd_HHmmss}";
-                                        File.Copy(destino, backupFile, true);
-                                        EscribirLog($"Backup del keystore anterior guardado en: {backupFile}");
-                                    }
-
-                                    EscribirLog($"Copiando keystore a: {destino}");
-                                    File.Copy(origenKeystore, destino, true);
-                                    EscribirLog($"[ÉXITO] Copiado a: {destino}");
-                                }
-                                catch (Exception ex)
-                                {
-                                    EscribirLog($"[ERROR] Falló copia a {destino}: {ex.Message}", true);
-                                    errores.Add($"{destino} -> {ex.Message}");
-                                    exitoDeploy = false;
-                                }
-                            }
-                        }
-
-                        // 3) Arrancar servicio UNA sola vez
-                        if (reiniciar)
-                        {
-                            try
-                            {
-                                using var sc = new ServiceController(tomcatServicio);
-                                if (sc.Status != ServiceControllerStatus.Running)
-                                {
-                                    EscribirLog($"Iniciando servicio: {tomcatServicio}...");
-                                    sc.Start();
-                                    sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(120));
-                                    EscribirLog($"Servicio {tomcatServicio} iniciado.");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                EscribirLog($"[ERROR] No se pudo iniciar el servicio: {ex.Message}", true);
-                                errores.Add($"Inicio servicio -> {ex.Message}");
-                                exitoDeploy = false;
-                            }
-                        }
-
-                        if (!exitoDeploy)
-                            errorDeploy = string.Join(" | ", errores);
                         else
-                            EscribirLog("[ÉXITO] Despliegue a Tomcat completado en todos los destinos.");
+                        {
+                            string origenKeystore = Path.Combine(outputPath, outputName);
+                            bool reiniciar = restartTomcat.ToLower() == "true";
+                            bool backup = backupOld.ToLower() == "true";
+
+                            EscribirLog($"Iniciando despliegue a Tomcat ({rutasDestino.Length} nodo(s))...");
+                            EscribirLog("Emparejamiento ruta ↔ servicio:");
+                            for (int i = 0; i < rutasDestino.Length; i++)
+                            {
+                                EscribirLog($"   [{i + 1}] {servicios[i]}  →  {rutasDestino[i]}");
+                            }
+
+                            exitoDeploy = true;
+                            var errores = new List<string>();
+
+                            // 1) Detener TODOS los servicios
+                            if (reiniciar)
+                            {
+                                foreach (var svc in servicios)
+                                {
+                                    try
+                                    {
+                                        using var sc = new ServiceController(svc);
+                                        if (sc.Status == ServiceControllerStatus.Running ||
+                                            sc.Status == ServiceControllerStatus.StartPending)
+                                        {
+                                            EscribirLog($"Deteniendo servicio: {svc}...");
+                                            sc.Stop();
+                                            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(120));
+                                            EscribirLog($"Servicio {svc} detenido.");
+                                        }
+                                        else
+                                        {
+                                            EscribirLog($"El servicio {svc} ya estaba detenido.");
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        EscribirLog($"[ERROR] No se pudo detener el servicio '{svc}': {ex.Message}", true);
+                                        errores.Add($"Detener {svc} -> {ex.Message}");
+                                        exitoDeploy = false;
+                                    }
+                                }
+                            }
+
+                            // 2) Copiar a TODOS los destinos
+                            if (exitoDeploy)
+                            {
+                                foreach (var destino in rutasDestino)
+                                {
+                                    try
+                                    {
+                                        string destinoDir = Path.GetDirectoryName(destino);
+                                        if (!string.IsNullOrEmpty(destinoDir) && !Directory.Exists(destinoDir))
+                                        {
+                                            Directory.CreateDirectory(destinoDir);
+                                            EscribirLog($"Carpeta de destino creada: {destinoDir}");
+                                        }
+
+                                        if (backup && File.Exists(destino))
+                                        {
+                                            string backupFile = destino + $".backup_{DateTime.Now:yyyyMMdd_HHmmss}";
+                                            File.Copy(destino, backupFile, true);
+                                            EscribirLog($"Backup del keystore anterior guardado en: {backupFile}");
+                                        }
+
+                                        EscribirLog($"Copiando keystore a: {destino}");
+                                        File.Copy(origenKeystore, destino, true);
+                                        EscribirLog($"[ÉXITO] Copiado a: {destino}");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        EscribirLog($"[ERROR] Falló copia a {destino}: {ex.Message}", true);
+                                        errores.Add($"{destino} -> {ex.Message}");
+                                        exitoDeploy = false;
+                                    }
+                                }
+                            }
+
+                            // 3) Arrancar TODOS los servicios (incluso si alguno falló al copiar,
+                            //    para no dejar Tomcat caído)
+                            if (reiniciar)
+                            {
+                                foreach (var svc in servicios)
+                                {
+                                    try
+                                    {
+                                        using var sc = new ServiceController(svc);
+                                        if (sc.Status != ServiceControllerStatus.Running)
+                                        {
+                                            EscribirLog($"Iniciando servicio: {svc}...");
+                                            sc.Start();
+                                            sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(120));
+                                            EscribirLog($"Servicio {svc} iniciado.");
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        EscribirLog($"[ERROR] No se pudo iniciar el servicio '{svc}': {ex.Message}", true);
+                                        errores.Add($"Iniciar {svc} -> {ex.Message}");
+                                        exitoDeploy = false;
+                                    }
+                                }
+                            }
+
+                            if (!exitoDeploy)
+                                errorDeploy = string.Join(" | ", errores);
+                            else
+                                EscribirLog("[ÉXITO] Despliegue a Tomcat completado en todos los nodos.");
+                        }
                     }
                 }
                 else
@@ -232,7 +263,6 @@ class Program
                     exitoDeploy = true;
                 }
             }
-
             // 🔧 HÍBRIDO: BACKUP + MOVER A procesados/ SOLO si TODO fue exitoso
             if (exitoGeneracion && exitoDeploy)
             {

@@ -145,10 +145,10 @@ class Program
                         {
                             EscribirLog("[ÉXITO] Despliegue en Apache XAMPP completado.");
 
-                            // ÚNICO LUGAR DONDE SE HACEN BACKUPS Y LIMPIEZA DE FUENTE
+                            // ÚNICO LUGAR DONDE SE HACEN BACKUPS Y ARCHIVADO DE FUENTE
                             if (enableBackup?.ToLower() == "true")
                             {
-                                ProcesarBackupYVaciarFuentes(backupSourceFolders, backupDestination);
+                                ProcesarBackupYArchivarFuentes(backupSourceFolders, backupDestination);
                             }
                         }
                         else
@@ -170,8 +170,6 @@ class Program
             {
                 EscribirLog("[EMAIL] Enviando notificación por correo...");
 
-                // CORRECCIÓN: Si el despliegue fue exitoso, leemos el certificado desde la ubicación final de Apache.
-                // Si falló o no se desplegó, intentamos leer 'certFinal'.
                 string apachePathCfg = ObtenerValor(config, "APACHE_PATH", "DEPLOY_SETTINGS");
                 string certPathParaEmail = certFinal;
 
@@ -389,7 +387,9 @@ class Program
         }
     }
 
-    private static void ProcesarBackupYVaciarFuentes(string backupSourceFolders, string backupDestination)
+    // 🔧 HÍBRIDO: copia al backup con timestamp Y MUEVE el original a 'procesados/'
+    //           (antes se llamaba ProcesarBackupYVaciarFuentes y hacía File.Delete)
+    private static void ProcesarBackupYArchivarFuentes(string backupSourceFolders, string backupDestination)
     {
         if (string.IsNullOrEmpty(backupDestination))
         {
@@ -414,6 +414,14 @@ class Program
                 continue;
             }
 
+            // 🔧 HÍBRIDO: subcarpeta 'procesados' dentro de cada fuente
+            string carpetaProcesados = Path.Combine(fuente, "procesados");
+            if (!Directory.Exists(carpetaProcesados))
+            {
+                Directory.CreateDirectory(carpetaProcesados);
+                EscribirLog($"[HÍBRIDO] Carpeta de procesados creada: {carpetaProcesados}");
+            }
+
             var archivos = Directory.GetFiles(fuente);
             foreach (var archivo in archivos)
             {
@@ -422,13 +430,16 @@ class Program
                     string nombreArchivo = Path.GetFileNameWithoutExtension(archivo);
                     string extension = Path.GetExtension(archivo);
 
+                    // 1. Copiar al backup con timestamp (igual que antes)
                     string nombreNuevo = $"{nombreArchivo}_{timeStamp}{extension}";
                     string destinoPath = Path.Combine(backupDestination, nombreNuevo);
-
                     File.Copy(archivo, destinoPath, true);
-                    File.Delete(archivo);
 
-                    EscribirLog($"[BACKUP & LIMPIEZA] Archivado en destino y removido de origen: {Path.GetFileName(archivo)} -> {nombreNuevo}");
+                    // 2. Mover el original a 'procesados/' (antes: File.Delete)
+                    string destinoProcesado = Path.Combine(carpetaProcesados, Path.GetFileName(archivo));
+                    File.Move(archivo, destinoProcesado, true);
+
+                    EscribirLog($"[BACKUP + ARCHIVADO] {Path.GetFileName(archivo)} -> backup: {nombreNuevo} | procesados: {Path.GetFileName(destinoProcesado)}");
                 }
                 catch (Exception ex)
                 {
