@@ -1,4 +1,4 @@
-﻿using CertificadoAutomatico;
+﻿using CertificadoAutomaticoXampp;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
